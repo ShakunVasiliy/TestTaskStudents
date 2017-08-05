@@ -29,7 +29,7 @@ namespace TestTaskStudents.APP.Services
 
         public bool Delete()
         {
-            return MessageBox.Show("Удалить?") == MessageBoxResult.OK ? true : false;
+            return MessageBox.Show("Delete selected students?", "Delete?", MessageBoxButton.OKCancel) == MessageBoxResult.OK ? true : false;
         }
 
         #endregion IStudentService
