@@ -8,6 +8,8 @@ namespace TestTaskStudents.APP.Services
 {
     public class StudentService : IStudentService
     {
+        #region IStudentService
+
         public StudentViewModel Create()
         {
             var createStudentWindow = new EditStudentWindow();
@@ -23,5 +25,7 @@ namespace TestTaskStudents.APP.Services
 
             return editResult ?? false;
         }
+
+        #endregion IStudentService
     }
 }
