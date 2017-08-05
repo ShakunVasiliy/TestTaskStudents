@@ -10,11 +10,6 @@ namespace TestTaskStudents.BLL.ViewModels
     {
         private Student student;
 
-        public StudentViewModel(Student student)
-        {
-            this.student = student;
-        }
-
         public int Id
         {
             get
