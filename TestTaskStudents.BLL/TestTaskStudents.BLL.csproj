@@ -42,6 +42,13 @@
   <ItemGroup>
     <Compile Include="Infrastructure\ChangeNotifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\StudentViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestTaskStudents.DAL\TestTaskStudents.DAL.csproj">
+      <Project>{c867438d-b132-4049-8ff6-b961d3f8ee4c}</Project>
+      <Name>TestTaskStudents.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
