@@ -7,6 +7,6 @@ namespace TestTaskStudents.BLL.Interfaces
 {
     public interface IDeleteParameterService
     {
-        IEnumerable<StudentsViewModel> GetStudents(object deleteParameter);
+        IEnumerable<StudentViewModel> GetStudents(object deleteParameter);
     }
 }
