@@ -120,5 +120,12 @@ namespace TestTaskStudents.BLL.ViewModels
 
             Students.Add(student);
         }
+
+        private void DeleteStudents(object parameter)
+        {
+            if (SelectedStudent == null) return;
+
+            
+        }
     }
 }

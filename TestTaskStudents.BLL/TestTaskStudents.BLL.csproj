@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="Interfaces\IEditStudentService.cs" />
+    <Compile Include="Interfaces\IStudentService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

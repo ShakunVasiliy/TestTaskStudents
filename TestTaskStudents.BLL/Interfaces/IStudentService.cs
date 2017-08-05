@@ -8,5 +8,6 @@ namespace TestTaskStudents.BLL.Interfaces
     {
         bool Edit(StudentViewModel student);
         StudentViewModel Create();
+        bool Delete();
     }
 }
