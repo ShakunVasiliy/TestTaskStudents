@@ -29,8 +29,10 @@ namespace TestTaskStudents.BLL.ViewModels
             }
         }
 
-        public StudentsViewModel()
+        public StudentsViewModel(IStudentService studentService)
         {
+            this.studentService = studentService;
+
             Students = new ObservableCollection<StudentViewModel>()
             {
                 new StudentViewModel
