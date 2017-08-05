@@ -24,16 +24,16 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">First name</TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Student.FirstName}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding FirstName}"></TextBox>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Last name</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Student.LastName}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding LastName}"></TextBox>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Age</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Student.Age}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Age}"></TextBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Gender</TextBlock>
-        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Source=Student, Path=Gender, Converter={StaticResource GenderConverter}}">
+        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Gender, Converter={StaticResource GenderConverter}}">
             <TextBlock>Man</TextBlock>
             <TextBlock>Woman</TextBlock>
         </ComboBox>
