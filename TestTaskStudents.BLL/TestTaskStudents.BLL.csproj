@@ -55,8 +55,9 @@
       <Name>TestTaskStudents.DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <Compile Include="Interfaces\IEditStudentService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
