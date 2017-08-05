@@ -79,5 +79,10 @@ namespace TestTaskStudents.BLL.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public StudentViewModel()
+        {
+            student = new Student();
+        }
     }
 }
