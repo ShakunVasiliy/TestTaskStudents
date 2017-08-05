@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.BLL.Infrastructure;
+
 namespace TestTaskStudents.APP.Views
 {
     /// <summary>
@@ -22,6 +25,9 @@ namespace TestTaskStudents.APP.Views
         public EditStudentWindow()
         {
             InitializeComponent();
+
+            this.DataContext = new EditStudentViewModule();
+            this.Resources.Add("GenderConverter", new GenderConverter());
         }
     }
 }

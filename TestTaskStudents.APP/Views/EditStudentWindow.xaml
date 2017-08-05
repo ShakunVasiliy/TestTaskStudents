@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestTaskStudents.APP.Views"
+        xmlns:bllInfrastructure="clr-namespace:TestTaskStudents.BLL.Infrastructure;assembly=TestTaskStudents.BLL"
         mc:Ignorable="d"
         Title="Student" Height="150" Width="300">
+    <Window.Resources>
+        <bllInfrastructure:GenderConverter x:Key="GenderConverter"></bllInfrastructure:GenderConverter>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -20,16 +24,16 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">First name</TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding FirstName}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Student.FirstName}"></TextBox>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Last name</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding LastName}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Student.LastName}"></TextBox>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Age</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Age}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Student.Age}"></TextBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Gender</TextBlock>
-        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Gender}">
+        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Source=Student, Path=Gender, Converter={StaticResource GenderConverter}}">
             <TextBlock>Man</TextBlock>
             <TextBlock>Woman</TextBlock>
         </ComboBox>
