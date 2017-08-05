@@ -35,7 +35,7 @@ namespace TestTaskStudents.BLL.ViewModels
 
         private RelayCommand addCommand;
         private RelayCommand editCommand;
-        private RelayCommand removeCommand;
+        private RelayCommand deleteCommand;
 
         public RelayCommand AddCommand
         {
@@ -60,6 +60,19 @@ namespace TestTaskStudents.BLL.ViewModels
                 }
 
                 return editCommand;
+            }
+        }
+
+        public RelayCommand DeleteCommand
+        {
+            get
+            {
+                if (deleteCommand == null)
+                {
+                    deleteCommand = new RelayCommand(DeleteStudents, obj => selectedStudent != null);
+                }
+
+                return deleteCommand;
             }
         }
 
@@ -125,7 +138,10 @@ namespace TestTaskStudents.BLL.ViewModels
         {
             if (SelectedStudent == null) return;
 
-            
+            if (studentService.Delete())
+            {
+                Students.Remove(SelectedStudent);
+            }
         }
     }
 }
