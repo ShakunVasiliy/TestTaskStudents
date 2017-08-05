@@ -6,9 +6,25 @@ using TestTaskStudents.DAL.Infrastructure;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
-    public class StudentsViewModel
+    public class StudentsViewModel : ChangeNotifier
     {
+        private StudentViewModel selectedStudent;
+
         public ObservableCollection<StudentViewModel> Students { get; set; }
+
+        public StudentViewModel SelectedStudent
+        {
+            get
+            {
+                return selectedStudent;
+            }
+            set
+            {
+                selectedStudent = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         public StudentsViewModel()
         {
