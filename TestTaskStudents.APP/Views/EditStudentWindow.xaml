@@ -38,7 +38,7 @@
             <TextBlock>Woman</TextBlock>
         </ComboBox>
 
-        <Button Grid.Row="4" Grid.Column="0" Content="Save"></Button>
+        <Button Grid.Row="4" Grid.Column="0" Content="Save" Click="Button_Click"></Button>
         <Button Grid.Row="4" Grid.Column="1" Content="Cancel" IsCancel="True"></Button>
     </Grid>
 </Window>

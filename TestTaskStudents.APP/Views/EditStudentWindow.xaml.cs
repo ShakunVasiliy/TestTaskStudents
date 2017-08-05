@@ -27,5 +27,10 @@ namespace TestTaskStudents.APP.Views
 
             this.DataContext = new StudentsViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
     }
 }
