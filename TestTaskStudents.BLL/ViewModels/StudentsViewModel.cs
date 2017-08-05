@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -14,6 +16,7 @@ namespace TestTaskStudents.BLL.ViewModels
         private StudentViewModel selectedStudent;
 
         private IStudentService studentService;
+        private IDeleteParameterService deleteParameterService;
 
         public ObservableCollection<StudentViewModel> Students { get; set; }
 
@@ -78,9 +81,10 @@ namespace TestTaskStudents.BLL.ViewModels
 
         #endregion Commands
 
-        public StudentsViewModel(IStudentService studentService)
+        public StudentsViewModel(IStudentService studentService, IDeleteParameterService deleteParameterService)
         {
             this.studentService = studentService;
+            this.deleteParameterService = deleteParameterService;
 
             Students = new ObservableCollection<StudentViewModel>()
             {
@@ -136,11 +140,14 @@ namespace TestTaskStudents.BLL.ViewModels
 
         private void DeleteStudents(object parameter)
         {
-            if (SelectedStudent == null) return;
-
             if (studentService.Delete())
             {
-                Students.Remove(SelectedStudent);
+                var studentsForDelete = deleteParameterService.GetStudents(parameter);
+
+                foreach (var student in studentsForDelete)
+                {
+                    Students.Remove((StudentViewModel)student);
+                }
             }
         }
     }

@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <ListView ItemsSource="{Binding Path=Students}" SelectedItem="{Binding SelectedStudent}" SelectionMode="Multiple">
+            <ListView x:Name="studentListView" ItemsSource="{Binding Path=Students}" SelectedItem="{Binding SelectedStudent}" SelectionMode="Multiple">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="300">FIO</GridViewColumn>
@@ -33,7 +33,8 @@
 
             <Button Grid.Column="0" Content="Add" Command="{Binding AddCommand}"></Button>
             <Button Grid.Column="1" Content="Edit" Command="{Binding EditCommand}"></Button>
-            <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}"></Button>
+            <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}" 
+                    CommandParameter="{Binding ElementName=studentListView, Path=SelectedItems}"></Button>
         </Grid>
     </Grid>
 </Window>
