@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <ListView>
+            <ListView ItemsSource="{Binding Path=Students}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="300">FIO</GridViewColumn>

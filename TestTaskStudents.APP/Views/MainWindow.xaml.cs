@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using TestTaskStudents.BLL.ViewModels;
+
 namespace TestTaskStudents.APP.Views
 {
     /// <summary>
@@ -23,6 +25,8 @@ namespace TestTaskStudents.APP.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = new StudentsViewModel();
         }
     }
 }
