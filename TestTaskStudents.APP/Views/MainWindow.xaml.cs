@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using TestTaskStudents.APP.Services;
 using TestTaskStudents.BLL.ViewModels;
 
 namespace TestTaskStudents.APP.Views
@@ -26,7 +27,7 @@ namespace TestTaskStudents.APP.Views
         {
             InitializeComponent();
 
-            this.DataContext = new StudentsViewModel();
+            this.DataContext = new StudentsViewModel(new StudentService());
         }
     }
 }
