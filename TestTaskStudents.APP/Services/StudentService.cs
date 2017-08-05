@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.ViewModels;
@@ -24,6 +25,11 @@ namespace TestTaskStudents.APP.Services
             var editResult = editStudentWindow.ShowDialog();
 
             return editResult ?? false;
+        }
+
+        public bool Delete()
+        {
+            return MessageBox.Show("Удалить?") == MessageBoxResult.OK ? true : false;
         }
 
         #endregion IStudentService
