@@ -22,10 +22,14 @@ namespace TestTaskStudents.APP.Views
     public partial class EditStudentWindow : Window
     {
         public EditStudentWindow()
+            : this(new StudentViewModel())
+        { }
+
+        public EditStudentWindow(StudentViewModel student)
         {
             InitializeComponent();
 
-            this.DataContext = new StudentsViewModel();
+            this.DataContext = student;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
