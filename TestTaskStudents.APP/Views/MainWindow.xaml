@@ -1,0 +1,39 @@
+﻿<Window x:Class="TestTaskStudents.APP.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestTaskStudents.APP"
+        mc:Ignorable="d"
+        Title="Students" Height="350" Width="430">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <ListView>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="300">FIO</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Age}" Width="50">Age</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Gender}" Width="50">Gander</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Add"></Button>
+            <Button Grid.Column="1" Content="Edit"></Button>
+            <Button Grid.Column="2" Content="Delete"></Button>
+        </Grid>
+    </Grid>
+</Window>

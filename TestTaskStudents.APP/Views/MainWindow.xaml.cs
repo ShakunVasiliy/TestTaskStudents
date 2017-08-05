@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestTaskStudents.APP
+namespace TestTaskStudents.APP.Views
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
