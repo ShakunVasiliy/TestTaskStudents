@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 using TestTaskStudents.BLL.Commands;
 using TestTaskStudents.BLL.Interfaces;
@@ -32,9 +33,22 @@ namespace TestTaskStudents.BLL.ViewModels
 
         #region Commands
 
-        private RelayCommand editCommand;
         private RelayCommand addCommand;
+        private RelayCommand editCommand;
         private RelayCommand removeCommand;
+
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                if (addCommand == null)
+                {
+                    addCommand = new RelayCommand(AddStudent);
+                }
+
+                return addCommand;
+            }
+        }
 
         public RelayCommand EditCommand
         {
@@ -42,7 +56,7 @@ namespace TestTaskStudents.BLL.ViewModels
             {
                 if (editCommand == null)
                 {
-                    editCommand = new RelayCommand(EditSelectedStudent);
+                    editCommand = new RelayCommand(EditSelectedStudent, obj => SelectedStudent != null);
                 }
 
                 return editCommand;
@@ -90,6 +104,21 @@ namespace TestTaskStudents.BLL.ViewModels
                 SelectedStudent.Age = selectedStudentClone.Age;
                 SelectedStudent.Gender = selectedStudentClone.Gender;
             }
+        }
+
+        private void AddStudent(object parameter)
+        {
+            var student = studentService.Create();
+
+            if (student == null) return;
+
+            var lastId = (from s in Students
+                          select s.Id).Max();
+            var newId = lastId + 1;
+
+            student.Id = newId;
+
+            Students.Add(student);
         }
     }
 }
