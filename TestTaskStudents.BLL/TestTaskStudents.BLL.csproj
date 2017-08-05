@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\EditStudentCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Infrastructure\ChangeNotifier.cs" />
     <Compile Include="Infrastructure\GenderConverter.cs" />
