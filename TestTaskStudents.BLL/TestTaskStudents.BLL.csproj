@@ -46,6 +46,7 @@
     <Compile Include="Infrastructure\ChangeNotifier.cs" />
     <Compile Include="Infrastructure\GenderConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EditStudentViewModule.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
   </ItemGroup>
