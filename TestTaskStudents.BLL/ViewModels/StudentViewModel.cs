@@ -6,7 +6,7 @@ using TestTaskStudents.DAL.Infrastructure;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
-    public class StudentViewModel : ChangeNotifier
+    public class StudentViewModel : ChangeNotifier, ICloneable
     {
         private Student student;
 
@@ -84,5 +84,24 @@ namespace TestTaskStudents.BLL.ViewModels
         {
             student = new Student();
         }
+
+        #region ICloneable
+
+        public object Clone()
+        {
+            return new StudentViewModel
+            {
+                student = new Student
+                {
+                    Id = this.Id,
+                    FirstName = this.FirstName,
+                    LastName = this.LastName,
+                    Age = this.Age,
+                    Gender = this.Gender
+                }
+            };
+        }
+
+        #endregion ICloneable
     }
 }
