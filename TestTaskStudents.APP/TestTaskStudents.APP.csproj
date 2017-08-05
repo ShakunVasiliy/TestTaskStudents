@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\StudentService.cs" />
     <Compile Include="Views\EditStudentWindow.xaml.cs">
       <DependentUpon>EditStudentWindow.xaml</DependentUpon>
     </Compile>
