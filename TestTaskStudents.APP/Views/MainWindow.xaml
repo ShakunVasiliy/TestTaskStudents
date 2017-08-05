@@ -33,7 +33,7 @@
 
             <Button Grid.Column="0" Content="Add" Command="{Binding AddCommand}"></Button>
             <Button Grid.Column="1" Content="Edit" Command="{Binding EditCommand}"></Button>
-            <Button Grid.Column="2" Content="Delete"></Button>
+            <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}"></Button>
         </Grid>
     </Grid>
 </Window>
