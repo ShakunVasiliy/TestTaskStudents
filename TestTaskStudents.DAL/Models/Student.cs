@@ -2,7 +2,7 @@
 
 using TestTaskStudents.DAL.Infrastructure;
 
-namespace TestTaskStudents.DAL.Model
+namespace TestTaskStudents.DAL.Models
 {
     public class Student
     {
