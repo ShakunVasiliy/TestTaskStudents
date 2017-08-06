@@ -45,6 +45,7 @@ namespace TestTaskStudents.BLL.ViewModels
         private RelayCommand addCommand;
         private RelayCommand editCommand;
         private RelayCommand deleteCommand;
+        private RelayCommand saveCommand;
 
         public RelayCommand AddCommand
         {
@@ -84,6 +85,20 @@ namespace TestTaskStudents.BLL.ViewModels
                 return deleteCommand;
             }
         }
+
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                if (saveCommand == null)
+                {
+                    saveCommand = new RelayCommand(SaveStudents);
+                }
+
+                return saveCommand;
+            }
+        }
+
 
         #endregion Commands
 
@@ -143,6 +158,11 @@ namespace TestTaskStudents.BLL.ViewModels
                     studentRepository.Delete(student.Id);
                 }
             }
+        }
+
+        private void SaveStudents(object parameter)
+        {
+            studentRepository.Save();
         }
     }
 }
