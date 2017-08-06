@@ -1,13 +1,13 @@
 ﻿using System;
 
-using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.BLL.DTO;
 
 namespace TestTaskStudents.BLL.Interfaces
 {
     public interface IStudentService
     {
-        bool Edit(StudentViewModel student);
-        StudentViewModel Create();
+        bool Edit(StudentDTO student);
+        StudentDTO Create();
         bool Delete();
     }
 }

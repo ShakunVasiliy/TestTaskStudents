@@ -5,9 +5,9 @@ using TestTaskStudents.BLL.Infrastructure;
 using TestTaskStudents.DAL.Models;
 using TestTaskStudents.DAL.Infrastructure;
 
-namespace TestTaskStudents.BLL.ViewModels
+namespace TestTaskStudents.BLL.DTO
 {
-    public class StudentViewModel : ChangeNotifier, ICloneable, IDataErrorInfo
+    public class StudentDTO : ChangeNotifier, ICloneable, IDataErrorInfo
     {
         private static int minAgeValue = 16;
         private static int maxAgeValue = 100;
@@ -84,7 +84,7 @@ namespace TestTaskStudents.BLL.ViewModels
             }
         }
 
-        public StudentViewModel()
+        public StudentDTO()
         {
             student = new Student();
         }
@@ -93,7 +93,7 @@ namespace TestTaskStudents.BLL.ViewModels
 
         public object Clone()
         {
-            return new StudentViewModel
+            return new StudentDTO
             {
                 student = new Student
                 {

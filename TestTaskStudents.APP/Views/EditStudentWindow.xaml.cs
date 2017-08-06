@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.BLL.DTO;
 using TestTaskStudents.APP.Services;
 
 namespace TestTaskStudents.APP.Views
@@ -23,10 +24,10 @@ namespace TestTaskStudents.APP.Views
     public partial class EditStudentWindow : Window
     {
         public EditStudentWindow()
-            : this(new StudentViewModel())
+            : this(new StudentDTO())
         { }
 
-        public EditStudentWindow(StudentViewModel student)
+        public EditStudentWindow(StudentDTO student)
         {
             InitializeComponent();
 

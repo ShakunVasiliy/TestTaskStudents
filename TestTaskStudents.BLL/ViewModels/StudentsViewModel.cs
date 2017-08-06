@@ -8,6 +8,7 @@ using TestTaskStudents.BLL.Commands;
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.Infrastructure;
 using TestTaskStudents.BLL.Utils;
+using TestTaskStudents.BLL.DTO;
 using TestTaskStudents.DAL.Infrastructure;
 using TestTaskStudents.DAL.Interfaces;
 using TestTaskStudents.DAL.Repositories;
@@ -17,16 +18,16 @@ namespace TestTaskStudents.BLL.ViewModels
 {
     public class StudentsViewModel : ChangeNotifier
     {
-        private StudentViewModel selectedStudent;
+        private StudentDTO selectedStudent;
 
         private IStudentService studentService;
         private IDeleteCommandService deleteCommandService;
 
         private IStudentRepository studentRepository;
 
-        public ObservableCollection<StudentViewModel> Students { get; set; }
+        public ObservableCollection<StudentDTO> Students { get; set; }
 
-        public StudentViewModel SelectedStudent
+        public StudentDTO SelectedStudent
         {
             get
             {
@@ -108,14 +109,14 @@ namespace TestTaskStudents.BLL.ViewModels
             this.deleteCommandService = deleteParameterService;
             this.studentRepository = new StudentRepository(filePath);
             
-            Students = MappingUtil.MapToObservebleCollection<Student, StudentViewModel>(studentRepository.GetAll());
+            Students = MappingUtil.MapToObservebleCollection<Student, StudentDTO>(studentRepository.GetAll());
         }
 
         private void EditSelectedStudent(object parameter)
         {
             if (SelectedStudent == null) return;
             
-            var selectedStudentClone = (StudentViewModel)SelectedStudent.Clone();
+            var selectedStudentClone = (StudentDTO)SelectedStudent.Clone();
             var editResult = studentService.Edit(selectedStudentClone);
 
             if (editResult)
@@ -125,7 +126,7 @@ namespace TestTaskStudents.BLL.ViewModels
                 SelectedStudent.Age = selectedStudentClone.Age;
                 SelectedStudent.Gender = selectedStudentClone.Gender;
                 
-                var student = MappingUtil.MapToInstance<StudentViewModel, Student>(selectedStudent);
+                var student = MappingUtil.MapToInstance<StudentDTO, Student>(selectedStudent);
                 studentRepository.Update(student);
             }
         }
@@ -136,7 +137,7 @@ namespace TestTaskStudents.BLL.ViewModels
 
             if (studentViewModel == null) return;
             
-            var student = MappingUtil.MapToInstance<StudentViewModel, Student>(studentViewModel);
+            var student = MappingUtil.MapToInstance<StudentDTO, Student>(studentViewModel);
 
             studentRepository.Add(student);
             studentViewModel.Id = student.Id;
@@ -153,7 +154,7 @@ namespace TestTaskStudents.BLL.ViewModels
 
                 foreach (var student in studentsForDelete)
                 {
-                    Students.Remove((StudentViewModel)student);
+                    Students.Remove((StudentDTO)student);
 
                     studentRepository.Delete(student.Id);
                 }

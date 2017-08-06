@@ -55,7 +55,7 @@
     <Compile Include="Utils\MappingUtil.cs" />
     <Compile Include="ViewModels\EditStudentViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
-    <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="DTO\StudentDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestTaskStudents.DAL\TestTaskStudents.DAL.csproj">

@@ -2,6 +2,7 @@
 
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.Commands;
+using TestTaskStudents.BLL.DTO;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
@@ -9,9 +10,9 @@ namespace TestTaskStudents.BLL.ViewModels
     {
         private ISaveCommandService saveCommandService;
 
-        public StudentViewModel Student { get; private set; }
+        public StudentDTO Student { get; private set; }
         
-        public EditStudentViewModel(StudentViewModel student, ISaveCommandService saveCommandService)
+        public EditStudentViewModel(StudentDTO student, ISaveCommandService saveCommandService)
         {
             this.Student = student;
             this.saveCommandService = saveCommandService;

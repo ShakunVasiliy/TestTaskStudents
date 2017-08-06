@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.BLL.DTO;
 
 namespace TestTaskStudents.BLL.Interfaces
 {
     public interface IDeleteCommandService
     {
-        IEnumerable<StudentViewModel> GetStudents(object deleteParameter);
+        IEnumerable<StudentDTO> GetStudents(object deleteParameter);
     }
 }

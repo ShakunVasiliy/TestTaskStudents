@@ -4,6 +4,7 @@ using System.Windows;
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.ViewModels;
 using TestTaskStudents.APP.Views;
+using TestTaskStudents.BLL.DTO;
 
 namespace TestTaskStudents.APP.Services
 {
@@ -11,7 +12,7 @@ namespace TestTaskStudents.APP.Services
     {
         #region IStudentService
 
-        public StudentViewModel Create()
+        public StudentDTO Create()
         {
             var createStudentWindow = new EditStudentWindow();
             var createResult = createStudentWindow.ShowDialog();
@@ -19,7 +20,7 @@ namespace TestTaskStudents.APP.Services
             return createResult == true ? ((EditStudentViewModel)createStudentWindow.DataContext).Student : null;
         }
 
-        public bool Edit(StudentViewModel student)
+        public bool Edit(StudentDTO student)
         {
             var editStudentWindow = new EditStudentWindow(student);
             var editResult = editStudentWindow.ShowDialog();
