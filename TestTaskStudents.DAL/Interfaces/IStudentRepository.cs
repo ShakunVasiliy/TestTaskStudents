@@ -12,6 +12,7 @@ namespace TestTaskStudents.DAL.Interfaces
     {
         IEnumerable<Student> GetAll();
         void Add(Student student);
+        void Update(Student student);
         void Delete(Student student);
         void Save();
     }

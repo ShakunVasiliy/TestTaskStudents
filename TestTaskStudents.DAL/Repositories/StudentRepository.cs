@@ -41,6 +41,13 @@ namespace TestTaskStudents.DAL.Repositories
             return (students.Count() > 0) ? students.Max(student => student.Id) : 0;
         }
 
+        private XElement GetXStudent(int id)
+        {
+            return (from studentElement in xStudents.Elements(studentElementName)
+                    where studentElement.Attribute(idAttributeName).Value == id.ToString()
+                    select studentElement).FirstOrDefault();
+        }
+
         #region IStudentRepository
 
         public IEnumerable<Student> GetAll()
@@ -70,11 +77,21 @@ namespace TestTaskStudents.DAL.Repositories
             xStudents.Add(studentElement);
         }
 
+        public void Update(Student student)
+        {
+            XElement xStudent = GetXStudent(student.Id);
+
+            if (xStudent == null) return;
+
+            xStudent.Element(firstNameElementName).Value = student.FirstName;
+            xStudent.Element(lastNameElementName).Value = student.LastName;
+            xStudent.Element(ageElementName).Value = student.Age.ToString();
+            xStudent.Element(genderElementName).Value = ((int)student.Gender).ToString();
+        }
+
         public void Delete(Student student)
         {
-            XElement xStudent = (from studentElement in xStudents.Elements(studentElementName)
-                                 where studentElement.Attribute(idAttributeName).Value == student.Id.ToString()
-                                 select studentElement).FirstOrDefault();
+            XElement xStudent = GetXStudent(student.Id);
 
             if (xStudent == null) return;
 
