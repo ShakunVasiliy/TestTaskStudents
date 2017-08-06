@@ -16,7 +16,7 @@ namespace TestTaskStudents.BLL.ViewModels
         private StudentViewModel selectedStudent;
 
         private IStudentService studentService;
-        private IDeleteParameterService deleteParameterService;
+        private IDeleteCommandService deleteCommandService;
 
         public ObservableCollection<StudentViewModel> Students { get; set; }
 
@@ -81,10 +81,10 @@ namespace TestTaskStudents.BLL.ViewModels
 
         #endregion Commands
 
-        public StudentsViewModel(IStudentService studentService, IDeleteParameterService deleteParameterService)
+        public StudentsViewModel(IStudentService studentService, IDeleteCommandService deleteParameterService)
         {
             this.studentService = studentService;
-            this.deleteParameterService = deleteParameterService;
+            this.deleteCommandService = deleteParameterService;
 
             Students = new ObservableCollection<StudentViewModel>()
             {
@@ -142,7 +142,7 @@ namespace TestTaskStudents.BLL.ViewModels
         {
             if (studentService.Delete())
             {
-                var studentsForDelete = deleteParameterService.GetStudents(parameter);
+                var studentsForDelete = deleteCommandService.GetStudents(parameter);
 
                 foreach (var student in studentsForDelete)
                 {

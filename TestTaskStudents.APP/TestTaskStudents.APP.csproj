@@ -66,7 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Services\DeleteParameterService.cs" />
+    <Compile Include="Services\DeleteCommandService.cs" />
     <Compile Include="Services\SaveCommandService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Views\EditStudentWindow.xaml.cs">

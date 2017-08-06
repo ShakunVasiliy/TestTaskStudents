@@ -5,7 +5,7 @@ using TestTaskStudents.BLL.ViewModels;
 
 namespace TestTaskStudents.BLL.Interfaces
 {
-    public interface IDeleteParameterService
+    public interface IDeleteCommandService
     {
         IEnumerable<StudentViewModel> GetStudents(object deleteParameter);
     }

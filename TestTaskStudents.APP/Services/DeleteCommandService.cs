@@ -7,9 +7,9 @@ using TestTaskStudents.BLL.ViewModels;
 
 namespace TestTaskStudents.APP.Services
 {
-    public class DeleteParameterService : IDeleteParameterService
+    public class DeleteCommandService : IDeleteCommandService
     {
-        #region IDeleteParameterService
+        #region IDeleteCommandService
 
         public IEnumerable<StudentViewModel> GetStudents(object deleteParameter)
         {
@@ -24,6 +24,6 @@ namespace TestTaskStudents.APP.Services
             return selectedStudents;
         }
 
-        #endregion IDeleteParameterService
+        #endregion IDeleteCommandService
     }
 }
