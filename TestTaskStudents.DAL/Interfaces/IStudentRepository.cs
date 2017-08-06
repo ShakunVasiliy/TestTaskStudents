@@ -8,10 +8,11 @@ using TestTaskStudents.DAL.Models;
 
 namespace TestTaskStudents.DAL.Interfaces
 {
-    public interface IStudentRepository : IDisposable
+    public interface IStudentRepository
     {
         IEnumerable<Student> GetAll();
         void Add(Student student);
+        void Delete(Student student);
         void Save();
     }
 }
