@@ -33,7 +33,7 @@
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age, Converter={StaticResource AgeConverter}}" Width="50"></DataGridTextColumn>
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="50"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

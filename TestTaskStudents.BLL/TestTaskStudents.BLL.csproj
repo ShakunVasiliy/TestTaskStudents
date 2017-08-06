@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Infrastructure\AgeConverter.cs" />
     <Compile Include="Infrastructure\ChangeNotifier.cs" />
     <Compile Include="Infrastructure\GenderConverter.cs" />
     <Compile Include="Interfaces\IDeleteCommandService.cs" />

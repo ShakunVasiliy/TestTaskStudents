@@ -2,8 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TestTaskStudents.APP"
+             xmlns:bllInfrastructure="clr-namespace:TestTaskStudents.BLL.Infrastructure;assembly=TestTaskStudents.BLL"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+        <bllInfrastructure:GenderConverter x:Key="GenderConverter"></bllInfrastructure:GenderConverter>
+        <bllInfrastructure:AgeConverter x:Key="AgeConverter"></bllInfrastructure:AgeConverter>
+        
         <ControlTemplate x:Key="emptyStudentDataGrid" TargetType="DataGrid">
             <Border Name="Border"
                 BorderThickness="1">
