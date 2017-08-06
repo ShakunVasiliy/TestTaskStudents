@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Input;
 
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.Commands;
@@ -6,15 +7,14 @@ using TestTaskStudents.BLL.DTO;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
-    public class EditStudentViewModel
+    public class EditStudentViewModel: IEditStudentViewModel
     {
         private ISaveCommandService saveCommandService;
 
-        public StudentDTO Student { get; private set; }
+        public StudentDTO Student { get; set; }
         
-        public EditStudentViewModel(StudentDTO student, ISaveCommandService saveCommandService)
+        public EditStudentViewModel(ISaveCommandService saveCommandService)
         {
-            this.Student = student;
             this.saveCommandService = saveCommandService;
         }
 
@@ -22,7 +22,7 @@ namespace TestTaskStudents.BLL.ViewModels
 
         private RelayCommand saveCommand;
 
-        public RelayCommand SaveCommand
+        public ICommand SaveCommand
         {
             get
             {

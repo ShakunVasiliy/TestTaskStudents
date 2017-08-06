@@ -14,7 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using TestTaskStudents.APP.Services;
-using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.BLL.Interfaces;
+
+using Ninject;
 
 namespace TestTaskStudents.APP.Views
 {
@@ -26,8 +28,14 @@ namespace TestTaskStudents.APP.Views
         public MainWindow()
         {
             InitializeComponent();
+            InitializeDataContext();
+        }
 
-            this.DataContext = new StudentsViewModel(new StudentService(), new DeleteCommandService(), "Data/Students.xml");
+        private void InitializeDataContext()
+        {
+            IStudentsViewModel studentsViewModule = ((App)App.Current).Kernel.Get<IStudentsViewModel>();
+
+            this.DataContext = studentsViewModule;
         }
     }
 }

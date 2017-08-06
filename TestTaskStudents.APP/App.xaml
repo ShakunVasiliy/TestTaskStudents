@@ -12,7 +12,7 @@
             <Border Name="Border"
                 BorderThickness="1">
                 <ContentControl>
-                    <TextBlock Text="No students." VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="Нет студентов." VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 </ContentControl>
             </Border>
         </ControlTemplate>

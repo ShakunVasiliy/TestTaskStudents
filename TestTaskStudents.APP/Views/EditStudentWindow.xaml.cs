@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.DTO;
 using TestTaskStudents.APP.Services;
+
+using Ninject;
 
 namespace TestTaskStudents.APP.Views
 {
@@ -30,8 +32,15 @@ namespace TestTaskStudents.APP.Views
         public EditStudentWindow(StudentDTO student)
         {
             InitializeComponent();
+            InitializeDataContext(student);            
+        }
 
-            this.DataContext = new EditStudentViewModel(student, new SaveCommandService());
+        private void InitializeDataContext(StudentDTO student)
+        {
+            IEditStudentViewModel editStudentViewModel = ((App)App.Current).Kernel.Get<IEditStudentViewModel>();
+            editStudentViewModel.Student = student;
+
+            this.DataContext = editStudentViewModel;
         }
     }
 }

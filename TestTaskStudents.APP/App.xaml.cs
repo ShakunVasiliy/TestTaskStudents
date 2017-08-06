@@ -6,6 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Ninject;
+
+using TestTaskStudents.APP.Infrastructure;
+using TestTaskStudents.BLL.Infrastructure;
+
 namespace TestTaskStudents.APP
 {
     /// <summary>
@@ -13,5 +18,13 @@ namespace TestTaskStudents.APP
     /// </summary>
     public partial class App : Application
     {
+        private static string xmlFilePath = "Data/Students.xml";
+
+        public IKernel Kernel { get; private set; } 
+
+        public App()
+        {
+            Kernel = new StandardKernel(new BllServiceModule(xmlFilePath), new AppServiceModule());
+        }
     }
 }

@@ -33,6 +33,9 @@
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -49,8 +52,11 @@
     <Compile Include="Infrastructure\AgeConverter.cs" />
     <Compile Include="Infrastructure\ChangeNotifier.cs" />
     <Compile Include="Infrastructure\GenderConverter.cs" />
+    <Compile Include="Infrastructure\BllServiceModule.cs" />
     <Compile Include="Interfaces\IDeleteCommandService.cs" />
+    <Compile Include="Interfaces\IEditStudentViewModel.cs" />
     <Compile Include="Interfaces\ISaveCommandService.cs" />
+    <Compile Include="Interfaces\IStudentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\MappingUtil.cs" />
     <Compile Include="ViewModels\EditStudentViewModel.cs" />

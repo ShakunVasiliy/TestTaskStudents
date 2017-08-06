@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.Windows.Input;
 
 using TestTaskStudents.BLL.Commands;
 using TestTaskStudents.BLL.Interfaces;
@@ -16,7 +14,7 @@ using TestTaskStudents.DAL.Models;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
-    public class StudentsViewModel : ChangeNotifier
+    public class StudentsViewModel : ChangeNotifier, IStudentsViewModel
     {
         private StudentDTO selectedStudent;
 
@@ -48,7 +46,7 @@ namespace TestTaskStudents.BLL.ViewModels
         private RelayCommand deleteCommand;
         private RelayCommand saveCommand;
 
-        public RelayCommand AddCommand
+        public ICommand AddCommand
         {
             get
             {
@@ -61,7 +59,7 @@ namespace TestTaskStudents.BLL.ViewModels
             }
         }
 
-        public RelayCommand EditCommand
+        public ICommand EditCommand
         {
             get
             {
@@ -74,7 +72,7 @@ namespace TestTaskStudents.BLL.ViewModels
             }
         }
 
-        public RelayCommand DeleteCommand
+        public ICommand DeleteCommand
         {
             get
             {
@@ -87,7 +85,7 @@ namespace TestTaskStudents.BLL.ViewModels
             }
         }
 
-        public RelayCommand SaveCommand
+        public ICommand SaveCommand
         {
             get
             {
@@ -103,11 +101,11 @@ namespace TestTaskStudents.BLL.ViewModels
 
         #endregion Commands
 
-        public StudentsViewModel(IStudentService studentService, IDeleteCommandService deleteParameterService, string filePath)
+        public StudentsViewModel(IStudentService studentService, IDeleteCommandService deleteParameterService, IStudentRepository studentRepository)
         {
             this.studentService = studentService;
             this.deleteCommandService = deleteParameterService;
-            this.studentRepository = new StudentRepository(filePath);
+            this.studentRepository = studentRepository;
             
             Students = MappingUtil.MapToObservebleCollection<Student, StudentDTO>(studentRepository.GetAll());
         }
