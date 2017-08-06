@@ -102,11 +102,11 @@ namespace TestTaskStudents.BLL.ViewModels
 
         #endregion Commands
 
-        public StudentsViewModel(IStudentService studentService, IDeleteCommandService deleteParameterService)
+        public StudentsViewModel(IStudentService studentService, IDeleteCommandService deleteParameterService, string filePath)
         {
             this.studentService = studentService;
             this.deleteCommandService = deleteParameterService;
-            this.studentRepository = new StudentRepository("Data/Students.xml");
+            this.studentRepository = new StudentRepository(filePath);
             
             Students = MappingUtil.MapToObservebleCollection<Student, StudentViewModel>(studentRepository.GetAll());
         }

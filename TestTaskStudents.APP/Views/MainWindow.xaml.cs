@@ -27,7 +27,7 @@ namespace TestTaskStudents.APP.Views
         {
             InitializeComponent();
 
-            this.DataContext = new StudentsViewModel(new StudentService(), new DeleteCommandService());
+            this.DataContext = new StudentsViewModel(new StudentService(), new DeleteCommandService(), "Data/Students.xml");
         }
     }
 }
