@@ -89,9 +89,9 @@ namespace TestTaskStudents.DAL.Repositories
             xStudent.Element(genderElementName).Value = ((int)student.Gender).ToString();
         }
 
-        public void Delete(Student student)
+        public void Delete(int id)
         {
-            XElement xStudent = GetXStudent(student.Id);
+            XElement xStudent = GetXStudent(id);
 
             if (xStudent == null) return;
 
