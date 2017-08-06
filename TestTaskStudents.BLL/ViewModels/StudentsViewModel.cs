@@ -137,6 +137,8 @@ namespace TestTaskStudents.BLL.ViewModels
             student.Id = newId;
 
             Students.Add(student);
+
+            SelectedStudent = student;
         }
 
         private void DeleteStudents(object parameter)
