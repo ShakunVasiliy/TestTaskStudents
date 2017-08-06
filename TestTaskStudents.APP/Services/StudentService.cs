@@ -16,7 +16,7 @@ namespace TestTaskStudents.APP.Services
             var createStudentWindow = new EditStudentWindow();
             var createResult = createStudentWindow.ShowDialog();
 
-            return createResult == true ? (StudentViewModel)createStudentWindow.DataContext : null;
+            return createResult == true ? ((EditStudentViewModel)createStudentWindow.DataContext).Student : null;
         }
 
         public bool Edit(StudentViewModel student)
