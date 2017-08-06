@@ -7,25 +7,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Students" Height="350" Width="430">
-    <Window.Resources>
-        <ControlTemplate x:Key="emptyStudentDataGrid" TargetType="DataGrid">
-            <Border Name="Border"
-                BorderThickness="1">
-                <ContentControl>
-                    <TextBlock Text="No students." VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                </ContentControl>
-            </Border>            
-        </ControlTemplate>
-
-        <Style TargetType="DataGrid">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Students.Count}" Value="0">
-                    <Setter Property="Template" Value="{StaticResource emptyStudentDataGrid}"></Setter>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
             <i:InvokeCommandAction Command="{Binding SaveCommand}"></i:InvokeCommandAction>

@@ -10,16 +10,6 @@
         Title="Student" Height="150" Width="300">
     <Window.Resources>
         <bllInfrastructure:GenderConverter x:Key="GenderConverter"></bllInfrastructure:GenderConverter>
-        <Style TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip"
-                            Value="{Binding RelativeSource={RelativeSource Self}, 
-                                    Path=(Validation.Errors)[0].ErrorContent}">                        
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

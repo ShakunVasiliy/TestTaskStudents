@@ -4,6 +4,32 @@
              xmlns:local="clr-namespace:TestTaskStudents.APP"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <ControlTemplate x:Key="emptyStudentDataGrid" TargetType="DataGrid">
+            <Border Name="Border"
+                BorderThickness="1">
+                <ContentControl>
+                    <TextBlock Text="No students." VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </ContentControl>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="DataGrid">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Students.Count}" Value="0">
+                    <Setter Property="Template" Value="{StaticResource emptyStudentDataGrid}"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, 
+                                    Path=(Validation.Errors)[0].ErrorContent}">
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
