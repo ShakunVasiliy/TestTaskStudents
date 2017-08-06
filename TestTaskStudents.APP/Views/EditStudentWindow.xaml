@@ -9,6 +9,16 @@
         Title="Student" Height="150" Width="300">
     <Window.Resources>
         <bllInfrastructure:GenderConverter x:Key="GenderConverter"></bllInfrastructure:GenderConverter>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, 
+                                    Path=(Validation.Errors)[0].ErrorContent}">                        
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -24,18 +34,51 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">First name</TextBlock>
-        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding FirstName}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+            <TextBox.Text>
+                <Binding Path="FirstName">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule></DataErrorValidationRule>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Last name</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding LastName}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+            <TextBox.Text>
+                <Binding Path="LastName">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule></DataErrorValidationRule>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Age</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Age}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+            <TextBox.Text>
+                <Binding Path="Age">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule></DataErrorValidationRule>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Gender</TextBlock>
-        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Gender, Converter={StaticResource GenderConverter}}">
-            <TextBlock>Man</TextBlock>
-            <TextBlock>Woman</TextBlock>
+        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+            <ComboBox.Items>
+                <TextBlock>Man</TextBlock>
+                <TextBlock>Woman</TextBlock>
+            </ComboBox.Items>
+            <ComboBox.Text>
+                <Binding Path="Gender" Converter="{StaticResource GenderConverter}">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule></DataErrorValidationRule>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
         </ComboBox>
 
         <Button Grid.Row="4" Grid.Column="0" Content="Save" Click="Button_Click"></Button>
