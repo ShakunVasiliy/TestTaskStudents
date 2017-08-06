@@ -6,23 +6,40 @@
         xmlns:local="clr-namespace:TestTaskStudents.APP"
         mc:Ignorable="d"
         Title="Students" Height="350" Width="430">
+    <Window.Resources>
+        <ControlTemplate x:Key="emptyStudentDataGrid" TargetType="DataGrid">
+            <Border Name="Border"
+                BorderThickness="1">
+                <ContentControl>
+                    <TextBlock Text="No students." VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </ContentControl>
+            </Border>            
+        </ControlTemplate>
+
+        <Style TargetType="DataGrid">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Students.Count}" Value="0">
+                    <Setter Property="Template" Value="{StaticResource emptyStudentDataGrid}"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <ListView x:Name="studentListView" ItemsSource="{Binding Path=Students}" SelectedItem="{Binding SelectedStudent}" SelectionMode="Multiple">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Width="300">FIO</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Age}" Width="50">Age</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Gender}" Width="50">Gander</GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </ScrollViewer>
+        <DataGrid x:Name="studentDataGrid" Grid.Row="0" 
+                  ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" 
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  RowBackground="White" AlternatingRowBackground="Beige">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Full name" Binding="{Binding FirstName}" Width="280"></DataGridTextColumn>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="50"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -34,7 +51,7 @@
             <Button Grid.Column="0" Content="Add" Command="{Binding AddCommand}"></Button>
             <Button Grid.Column="1" Content="Edit" Command="{Binding EditCommand}"></Button>
             <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}" 
-                    CommandParameter="{Binding ElementName=studentListView, Path=SelectedItems}"></Button>
+                    CommandParameter="{Binding ElementName=studentDataGrid, Path=SelectedItems}"></Button>
         </Grid>
     </Grid>
 </Window>
