@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using TestTaskStudents.BLL.ViewModels;
+using TestTaskStudents.APP.Services;
 
 namespace TestTaskStudents.APP.Views
 {
@@ -29,12 +30,7 @@ namespace TestTaskStudents.APP.Views
         {
             InitializeComponent();
 
-            this.DataContext = student;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
+            this.DataContext = new EditStudentViewModel(student, new SaveCommandService());
         }
     }
 }
