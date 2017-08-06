@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
+using AutoMapper;
+
 using TestTaskStudents.BLL.Commands;
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.Infrastructure;
 using TestTaskStudents.DAL.Infrastructure;
+using TestTaskStudents.DAL.Interfaces;
+using TestTaskStudents.DAL.Repositories;
+using TestTaskStudents.DAL.Models;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
@@ -17,6 +22,8 @@ namespace TestTaskStudents.BLL.ViewModels
 
         private IStudentService studentService;
         private IDeleteCommandService deleteCommandService;
+
+        private IStudentRepository studentRepository;
 
         public ObservableCollection<StudentViewModel> Students { get; set; }
 
@@ -85,26 +92,10 @@ namespace TestTaskStudents.BLL.ViewModels
         {
             this.studentService = studentService;
             this.deleteCommandService = deleteParameterService;
+            this.studentRepository = new StudentRepository("Data/Students.xml");
 
-            Students = new ObservableCollection<StudentViewModel>()
-            {
-                new StudentViewModel
-                {
-                    Id = 1,
-                    FirstName = "Vasya",
-                    LastName = "Shakun",
-                    Age = 24,
-                    Gender = Gender.Man
-                },
-                new StudentViewModel
-                {
-                    Id = 1,
-                    FirstName = "Leha",
-                    LastName = "Kozarez",
-                    Age = 24,
-                    Gender = Gender.Man
-                },
-            };
+            Mapper.Initialize(cfg => cfg.CreateMap<Student, StudentViewModel>());
+            Students = Mapper.Map<IEnumerable<Student>, ObservableCollection<StudentViewModel>>(studentRepository.GetAll());
         }
 
         private void EditSelectedStudent(object parameter)
@@ -120,25 +111,27 @@ namespace TestTaskStudents.BLL.ViewModels
                 SelectedStudent.LastName = selectedStudentClone.LastName;
                 SelectedStudent.Age = selectedStudentClone.Age;
                 SelectedStudent.Gender = selectedStudentClone.Gender;
+
+                Mapper.Initialize(cfg => cfg.CreateMap<StudentViewModel, Student>());
+                var student = Mapper.Map<StudentViewModel, Student>(selectedStudent);
+                studentRepository.Update(student);
             }
         }
 
         private void AddStudent(object parameter)
         {
-            var student = studentService.Create();
+            var studentViewModel = studentService.Create();
 
-            if (student == null) return;
+            if (studentViewModel == null) return;
 
-            var lastId = (Students.Count > 0) ? (from s in Students
-                                                 select s.Id).Max() 
-                                                 : 1;
-            var newId = lastId + 1;
+            Mapper.Initialize(cfg => cfg.CreateMap<StudentViewModel, Student>());
+            var student = Mapper.Map<StudentViewModel, Student>(studentViewModel);
 
-            student.Id = newId;
+            studentRepository.Add(student);
+            studentViewModel.Id = student.Id;
+            Students.Add(studentViewModel);
 
-            Students.Add(student);
-
-            SelectedStudent = student;
+            SelectedStudent = studentViewModel;
         }
 
         private void DeleteStudents(object parameter)
@@ -150,6 +143,8 @@ namespace TestTaskStudents.BLL.ViewModels
                 foreach (var student in studentsForDelete)
                 {
                     Students.Remove((StudentViewModel)student);
+
+                    studentRepository.Delete(student.Id);
                 }
             }
         }
