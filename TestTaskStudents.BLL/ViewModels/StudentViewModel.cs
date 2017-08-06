@@ -133,15 +133,15 @@ namespace TestTaskStudents.BLL.ViewModels
                 switch (fieldName)
                 {
                     case "FirstName":
-                        error = string.IsNullOrEmpty(FirstName) ? "First name can not be empty." : string.Empty;
+                        error = string.IsNullOrEmpty(FirstName) ? "Имя должно быть заполнено." : string.Empty;
                         break;
                     case "LastName":
-                        error = string.IsNullOrEmpty(LastName) ? "Last name can not be empty." : string.Empty;
+                        error = string.IsNullOrEmpty(LastName) ? "Фамилия должна быть заполнена." : string.Empty;
                         break;
                     case "Age":
                         if ((Age < minAgeValue) || (maxAgeValue < Age))
                         {
-                            error = $"Age must be more or equal {minAgeValue} and less or equal {maxAgeValue}.";
+                            error = $"Возраст должен быть не меньше {minAgeValue} и не больше {maxAgeValue}.";
                         }
                         break;
                 }

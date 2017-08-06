@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestTaskStudents.APP.Views"
         mc:Ignorable="d"
-        Title="Student" Height="150" Width="300">
+        Title="Студент" Height="150" Width="300">
     <Window.Resources>
     </Window.Resources>
     <Grid>
@@ -22,7 +22,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">First name</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Имя</TextBlock>
         <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
             <TextBox.Text>
                 <Binding Path="Student.FirstName" UpdateSourceTrigger="PropertyChanged">
@@ -33,7 +33,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Last name</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Фамилия</TextBlock>
         <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <TextBox.Text>
                 <Binding Path="Student.LastName" UpdateSourceTrigger="PropertyChanged">
@@ -44,7 +44,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Age</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Возраст</TextBlock>
         <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
             <TextBox.Text>
                 <Binding Path="Student.Age" UpdateSourceTrigger="PropertyChanged">
@@ -55,11 +55,11 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Gender</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Пол</TextBlock>
         <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
             <ComboBox.Items>
-                <TextBlock>Man</TextBlock>
-                <TextBlock>Woman</TextBlock>
+                <TextBlock>Мужчина</TextBlock>
+                <TextBlock>Женщина</TextBlock>
             </ComboBox.Items>
             <ComboBox.Text>
                 <Binding Path="Student.Gender" Converter="{StaticResource GenderConverter}">
@@ -67,8 +67,8 @@
             </ComboBox.Text>
         </ComboBox>
 
-        <Button Grid.Row="4" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}"
+        <Button Grid.Row="4" Grid.Column="0" Content="Сохранить" Command="{Binding SaveCommand}"
                 CommandParameter="{Binding ElementName=editStudentWindow}"></Button>
-        <Button Grid.Row="4" Grid.Column="1" Content="Cancel" IsCancel="True"></Button>
+        <Button Grid.Row="4" Grid.Column="1" Content="Отмена" IsCancel="True"></Button>
     </Grid>
 </Window>

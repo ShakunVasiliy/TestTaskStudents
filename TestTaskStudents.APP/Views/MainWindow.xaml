@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TestTaskStudents.APP"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
-        Title="Students" Height="350" Width="430">
+        Title="Студенты" Height="350" Width="430">
     
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
@@ -25,16 +25,16 @@
                   AutoGenerateColumns="False" IsReadOnly="True"
                   RowBackground="White" AlternatingRowBackground="Beige">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Full name" Width="280">
+                <DataGridTextColumn Header="ФИО" Width="260">
                     <DataGridTextColumn.Binding>
                         <MultiBinding StringFormat="{}{0} {1}">
-                            <Binding Path="FirstName"></Binding>
                             <Binding Path="LastName"></Binding>
+                            <Binding Path="FirstName"></Binding>
                         </MultiBinding>
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Age" Binding="{Binding Age, Converter={StaticResource AgeConverter}}" Width="50"></DataGridTextColumn>
-                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn Header="Возраст" Binding="{Binding Age, Converter={StaticResource AgeConverter}}" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender, Converter={StaticResource GenderConverter}}" Width="70"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -45,9 +45,9 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Add" Command="{Binding AddCommand}"></Button>
-            <Button Grid.Column="1" Content="Edit" Command="{Binding EditCommand}"></Button>
-            <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}" 
+            <Button Grid.Column="0" Content="Добавить" Command="{Binding AddCommand}"></Button>
+            <Button Grid.Column="1" Content="Изменить" Command="{Binding EditCommand}"></Button>
+            <Button Grid.Column="2" Content="Удалить" Command="{Binding DeleteCommand}" 
                     CommandParameter="{Binding ElementName=studentDataGrid, Path=SelectedItems}"></Button>
         </Grid>
     </Grid>
