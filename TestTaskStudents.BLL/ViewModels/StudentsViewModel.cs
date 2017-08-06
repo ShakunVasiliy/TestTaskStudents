@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-using AutoMapper;
-
 using TestTaskStudents.BLL.Commands;
 using TestTaskStudents.BLL.Interfaces;
 using TestTaskStudents.BLL.Infrastructure;
+using TestTaskStudents.BLL.Utils;
 using TestTaskStudents.DAL.Infrastructure;
 using TestTaskStudents.DAL.Interfaces;
 using TestTaskStudents.DAL.Repositories;
@@ -93,9 +92,8 @@ namespace TestTaskStudents.BLL.ViewModels
             this.studentService = studentService;
             this.deleteCommandService = deleteParameterService;
             this.studentRepository = new StudentRepository("Data/Students.xml");
-
-            Mapper.Initialize(cfg => cfg.CreateMap<Student, StudentViewModel>());
-            Students = Mapper.Map<IEnumerable<Student>, ObservableCollection<StudentViewModel>>(studentRepository.GetAll());
+            
+            Students = MappingUtil.MapToObservebleCollection<Student, StudentViewModel>(studentRepository.GetAll());
         }
 
         private void EditSelectedStudent(object parameter)
@@ -111,9 +109,8 @@ namespace TestTaskStudents.BLL.ViewModels
                 SelectedStudent.LastName = selectedStudentClone.LastName;
                 SelectedStudent.Age = selectedStudentClone.Age;
                 SelectedStudent.Gender = selectedStudentClone.Gender;
-
-                Mapper.Initialize(cfg => cfg.CreateMap<StudentViewModel, Student>());
-                var student = Mapper.Map<StudentViewModel, Student>(selectedStudent);
+                
+                var student = MappingUtil.MapToInstance<StudentViewModel, Student>(selectedStudent);
                 studentRepository.Update(student);
             }
         }
@@ -123,9 +120,8 @@ namespace TestTaskStudents.BLL.ViewModels
             var studentViewModel = studentService.Create();
 
             if (studentViewModel == null) return;
-
-            Mapper.Initialize(cfg => cfg.CreateMap<StudentViewModel, Student>());
-            var student = Mapper.Map<StudentViewModel, Student>(studentViewModel);
+            
+            var student = MappingUtil.MapToInstance<StudentViewModel, Student>(studentViewModel);
 
             studentRepository.Add(student);
             studentViewModel.Id = student.Id;
