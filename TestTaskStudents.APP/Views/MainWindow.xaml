@@ -43,7 +43,14 @@
                   AutoGenerateColumns="False" IsReadOnly="True"
                   RowBackground="White" AlternatingRowBackground="Beige">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Full name" Binding="{Binding FirstName}" Width="280"></DataGridTextColumn>
+                <DataGridTextColumn Header="Full name" Width="280">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="FirstName"></Binding>
+                            <Binding Path="LastName"></Binding>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="50"></DataGridTextColumn>
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="50"></DataGridTextColumn>
             </DataGrid.Columns>
