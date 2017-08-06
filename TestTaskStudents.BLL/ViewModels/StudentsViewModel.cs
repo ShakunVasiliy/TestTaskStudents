@@ -129,8 +129,9 @@ namespace TestTaskStudents.BLL.ViewModels
 
             if (student == null) return;
 
-            var lastId = (from s in Students
-                          select s.Id).Max();
+            var lastId = (Students.Count > 0) ? (from s in Students
+                                                 select s.Id).Max() 
+                                                 : 1;
             var newId = lastId + 1;
 
             student.Id = newId;
