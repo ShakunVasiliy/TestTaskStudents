@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 using TestTaskStudents.BLL.Infrastructure;
 using TestTaskStudents.DAL.Models;
@@ -6,8 +7,11 @@ using TestTaskStudents.DAL.Infrastructure;
 
 namespace TestTaskStudents.BLL.ViewModels
 {
-    public class StudentViewModel : ChangeNotifier, ICloneable
+    public class StudentViewModel : ChangeNotifier, ICloneable, IDataErrorInfo
     {
+        private static int minAgeValue = 16;
+        private static int maxAgeValue = 100;
+
         private Student student;
 
         public int Id
@@ -103,5 +107,50 @@ namespace TestTaskStudents.BLL.ViewModels
         }
 
         #endregion ICloneable
+
+        #region IDataErrorInfo
+
+        public string Error
+        {
+            get
+            {
+                var error = this["Id"];
+                error += this["FirstName"];
+                error += this["LastName"];
+                error += this["Age"];
+                error += this["Gender"];
+
+                return error;
+            }
+        }
+
+        public string this[string fieldName]
+        {
+            get
+            {
+                string error = string.Empty;
+
+                switch (fieldName)
+                {
+                    case "FirstName":
+                        error = string.IsNullOrEmpty(FirstName) ? "First name can not be empty." : string.Empty;
+                        break;
+                    case "LastName":
+                        error = string.IsNullOrEmpty(LastName) ? "Last name can not be empty." : string.Empty;
+                        break;
+                    case "Age":
+                        if ((Age < minAgeValue) || (maxAgeValue < Age))
+                        {
+                            error = $"Age must be more or equal {minAgeValue} and less or equal {maxAgeValue}.";
+                        }
+                        break;
+                }
+
+                return error;
+            }
+        }
+
+
+        #endregion IDataErrorInfo
     }
 }
